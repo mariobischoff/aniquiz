@@ -1,10 +1,11 @@
-import styled from "styled-components";
-import Head from "next/head";
-import db from "../db.json";
-import QuizBackground from "../src/components/QuizBackground";
-import Widget from "../src/components/Widget";
-import Footer from "../src/components/Footer";
-import GitHubCorner from "../src/components/GitHubCorner";
+import styled from 'styled-components';
+import { useRouter } from 'next/router';
+import { useState } from 'react';
+import db from '../db.json';
+import QuizBackground from '../src/components/QuizBackground';
+import Widget from '../src/components/Widget';
+import Footer from '../src/components/Footer';
+import GitHubCorner from '../src/components/GitHubCorner';
 
 const QuizContainer = styled.div`
   width: 100%;
@@ -33,26 +34,28 @@ const Input = styled.input`
   color: ${({ theme }) => theme.colors.contrastText};
 `;
 
+const Button = styled.button`
+  margin: 20px 0;
+  font-size: 18px;
+  width: 100%;
+  height: 38px;
+`;
+
 export default function Home() {
+  const router = useRouter();
+  const [name, setName] = useState('');
+
   return (
     <>
-      <Head>
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta property="og:title" content="AniQuiz" />
-        <meta
-          property="og:description"
-          content="Um Quiz desenvolvido durante a semana Imersão React."
-        />
-        <meta property="og:url" content="aniquiz.mariobischoff.vercel.app/" />
-        <meta property="og:image" content={db.bg} />
-      </Head>
       <QuizBackground backgroundImage={db.bg}>
         <QuizContainer>
           <Title>AniQuiz</Title>
           <Widget>
             <Widget.Header>
               <h3>
-                Vamos descobrir seu nivel de <strong>Otakes</strong>
+                Vamos descobrir seu nivel de
+                {' '}
+                <strong>Otakes</strong>
               </h3>
             </Widget.Header>
             <Widget.Content>
@@ -60,7 +63,18 @@ export default function Home() {
                 Teste os seus conhecimentos sobre o universo dos animes e
                 divirta-se criando o seu AluraQuiz!
               </p>
-              <Input placeholder="Diz aí seu nome pra jogar :)" />
+              <form onSubmit={(event) => {
+                event.preventDefault();
+                router.push(`/quiz?name=${name}`);
+              }}
+              >
+                <Input
+                  placeholder="Diz aí seu nome pra jogar :)"
+                  onChange={(event) => setName(event.target.value)}
+                  value={name}
+                />
+                <Button disabled={name.length < 3}>Jogar</Button>
+              </form>
             </Widget.Content>
           </Widget>
           <Widget>
