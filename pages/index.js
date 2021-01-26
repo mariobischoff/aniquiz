@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import Head from "next/head";
 import db from "../db.json";
 import QuizBackground from "../src/components/QuizBackground";
 import Widget from "../src/components/Widget";
@@ -26,7 +27,7 @@ const Title = styled.h1`
 const Input = styled.input`
   width: 100%;
   height: 38px;
-  border: 1px solid #DADADA;
+  border: 1px solid #dadada;
   border-radius: ${({ theme }) => theme.borderRadius};
   background-color: transparent;
   color: ${({ theme }) => theme.colors.contrastText};
@@ -34,35 +35,42 @@ const Input = styled.input`
 
 export default function Home() {
   return (
-    <QuizBackground backgroundImage={db.bg}>
-      <QuizContainer>
-        <Title>AniQuiz</Title>
-        <Widget>
-          <Widget.Header>
-            <h3>
-              Vamos descobrir seu nivel de <strong>Otakes</strong>
-            </h3>
-          </Widget.Header>
-          <Widget.Content>
-            <p>
-              Teste os seus conhecimentos sobre o universo dos animes e
-              divirta-se criando o seu AluraQuiz!
-            </p>
-            <Input placeholder="Diz aí seu nome pra jogar :)" />
-          </Widget.Content>
-        </Widget>
-        <Widget>
-          <Widget.Content>
-            <h1>Quizes da Galera</h1>
-            <p>
-              Dá uma olhada nesses quizes incríveis que o pessoal da Imersão
-              Alguma coisa fez:
-            </p>
-          </Widget.Content>
-        </Widget>
-        <Footer />
-      </QuizContainer>
-      <GitHubCorner projectUrl="http://github.com/mariobischoff" />
-    </QuizBackground>
+    <>
+      <Head>
+        <meta property="og:title" content="AniQuiz" key="ogtitle" />
+        <meta property="og:description" content="Um Quiz desenvolvido durante a semana Imersão React." key="ogdesc" />
+        <meta property="og:image" content={db.bg} key="ogimage" />
+      </Head>
+      <QuizBackground backgroundImage={db.bg}>
+        <QuizContainer>
+          <Title>AniQuiz</Title>
+          <Widget>
+            <Widget.Header>
+              <h3>
+                Vamos descobrir seu nivel de <strong>Otakes</strong>
+              </h3>
+            </Widget.Header>
+            <Widget.Content>
+              <p>
+                Teste os seus conhecimentos sobre o universo dos animes e
+                divirta-se criando o seu AluraQuiz!
+              </p>
+              <Input placeholder="Diz aí seu nome pra jogar :)" />
+            </Widget.Content>
+          </Widget>
+          <Widget>
+            <Widget.Content>
+              <h1>Quizes da Galera</h1>
+              <p>
+                Dá uma olhada nesses quizes incríveis que o pessoal da Imersão
+                Alguma coisa fez:
+              </p>
+            </Widget.Content>
+          </Widget>
+          <Footer />
+        </QuizContainer>
+        <GitHubCorner projectUrl="http://github.com/mariobischoff" />
+      </QuizBackground>
+    </>
   );
 }
