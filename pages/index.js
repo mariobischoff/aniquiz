@@ -16,24 +16,48 @@ const QuizContainer = styled.div`
   }
 `;
 
+const Title = styled.h1`
+  margin: 0;
+  padding: 0;
+  font-size: 34px;
+  text-align: center;
+`;
+
+const Input = styled.input`
+  width: 100%;
+  height: 38px;
+  border: 1px solid #DADADA;
+  border-radius: ${({ theme }) => theme.borderRadius};
+  background-color: transparent;
+  color: ${({ theme }) => theme.colors.contrastText};
+`;
+
 export default function Home() {
   return (
     <QuizBackground backgroundImage={db.bg}>
       <QuizContainer>
+        <Title>AniQuiz</Title>
         <Widget>
           <Widget.Header>
-            <h1>The AniQuiz</h1>
+            <h3>
+              Vamos descobrir seu nivel de <strong>Otakes</strong>
+            </h3>
           </Widget.Header>
           <Widget.Content>
-            <p> lorem lupsun lor upson</p>
+            <p>
+              Teste os seus conhecimentos sobre o universo dos animes e
+              divirta-se criando o seu AluraQuiz!
+            </p>
+            <Input placeholder="Diz aí seu nome pra jogar :)" />
           </Widget.Content>
         </Widget>
         <Widget>
-          <Widget.Header>
-            <h1>Quizes da Galera</h1>
-          </Widget.Header>
           <Widget.Content>
-            <p> lorem lupsun lor upson</p>
+            <h1>Quizes da Galera</h1>
+            <p>
+              Dá uma olhada nesses quizes incríveis que o pessoal da Imersão
+              Alguma coisa fez:
+            </p>
           </Widget.Content>
         </Widget>
         <Footer />
