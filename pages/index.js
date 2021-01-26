@@ -37,9 +37,14 @@ export default function Home() {
   return (
     <>
       <Head>
-        <meta property="og:title" content="AniQuiz" key="ogtitle" />
-        <meta property="og:description" content="Um Quiz desenvolvido durante a semana Imersão React." key="ogdesc" />
-        <meta property="og:image" content={db.bg} key="ogimage" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta property="og:title" content="AniQuiz" />
+        <meta
+          property="og:description"
+          content="Um Quiz desenvolvido durante a semana Imersão React."
+        />
+        <meta property="og:url" content="aniquiz.mariobischoff.vercel.app/" />
+        <meta property="og:image" content={db.bg} />
       </Head>
       <QuizBackground backgroundImage={db.bg}>
         <QuizContainer>
