@@ -3,20 +3,10 @@ import { useRouter } from 'next/router';
 import { useState } from 'react';
 import db from '../db.json';
 import QuizBackground from '../src/components/QuizBackground';
+import QuizContainer from '../src/components/QuizContainer';
 import Widget from '../src/components/Widget';
 import Footer from '../src/components/Footer';
 import GitHubCorner from '../src/components/GitHubCorner';
-
-const QuizContainer = styled.div`
-  width: 100%;
-  max-width: 350px;
-  padding-top: 45px;
-  margin: auto 10%;
-  @media screen and (max-width: 500px) {
-    margin: auto;
-    padding: 15px;
-  }
-`;
 
 const Title = styled.h1`
   margin: 0;
@@ -29,16 +19,31 @@ const Input = styled.input`
   width: 100%;
   height: 38px;
   border: 1px solid #dadada;
+  padding: 0 16px;
   border-radius: ${({ theme }) => theme.borderRadius};
   background-color: transparent;
   color: ${({ theme }) => theme.colors.contrastText};
+  ::placeholder {
+    color: #fff;
+    opacity: 0.5;
+  }
 `;
 
 const Button = styled.button`
   margin: 20px 0;
   font-size: 18px;
+  border: 1px solid #dadada;
+  padding: 0 16px;
+  color: ${({ theme }) => theme.colors.contrastText};
+  border-radius: ${({ theme }) => theme.borderRadius};
+  background-color: ${({ theme }) => theme.colors.success};
+  transition: .5s ease-out;
   width: 100%;
   height: 38px;
+  :disabled {
+    background-color: ${({ theme }) => theme.colors.wrong};
+    color: #DDDDDD;
+  }
 `;
 
 export default function Home() {

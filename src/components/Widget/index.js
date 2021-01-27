@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 const Widget = styled.div`
   margin-top: 24px;
@@ -17,6 +17,8 @@ const Widget = styled.div`
     margin-bottom: 0;
   }
   p {
+    color: #fff;
+    opacity: 0.8;
     font-size: 14px;
     font-weight: 400;
     line-height: 1;

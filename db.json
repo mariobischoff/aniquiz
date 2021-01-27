@@ -31,12 +31,12 @@
   ],
   "theme": {
     "colors": {
-      "primary": "#ef4f4f",
+      "primary": "#312c51",
       "secondary": "#74c7b8",
-      "mainBg": "#000",
+      "mainBg": "#252525",
       "contrastText": "#FFFFFF",
-      "wrong": "#FF5722",
-      "success": "#4CAF50"
+      "wrong": "#eb596e",
+      "success": "#70af85"
     },
     "borderRadius": "4px"
   }
