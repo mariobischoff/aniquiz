@@ -7,43 +7,15 @@ import QuizContainer from '../src/components/QuizContainer';
 import Widget from '../src/components/Widget';
 import Footer from '../src/components/Footer';
 import GitHubCorner from '../src/components/GitHubCorner';
+import Input from '../src/components/Input';
+import Button from '../src/components/Button';
+import QuizLogo from '../src/components/QuizLogo';
 
 const Title = styled.h1`
   margin: 0;
   padding: 0;
   font-size: 34px;
   text-align: center;
-`;
-
-const Input = styled.input`
-  width: 100%;
-  height: 38px;
-  border: 1px solid #dadada;
-  padding: 0 16px;
-  border-radius: ${({ theme }) => theme.borderRadius};
-  background-color: transparent;
-  color: ${({ theme }) => theme.colors.contrastText};
-  ::placeholder {
-    color: #fff;
-    opacity: 0.5;
-  }
-`;
-
-const Button = styled.button`
-  margin: 20px 0;
-  font-size: 18px;
-  border: 1px solid #dadada;
-  padding: 0 16px;
-  color: ${({ theme }) => theme.colors.contrastText};
-  border-radius: ${({ theme }) => theme.borderRadius};
-  background-color: ${({ theme }) => theme.colors.success};
-  transition: .5s ease-out;
-  width: 100%;
-  height: 38px;
-  :disabled {
-    background-color: ${({ theme }) => theme.colors.wrong};
-    color: #DDDDDD;
-  }
 `;
 
 export default function Home() {
@@ -54,7 +26,7 @@ export default function Home() {
     <>
       <QuizBackground backgroundImage={db.bg}>
         <QuizContainer>
-          <Title>AniQuiz</Title>
+          <QuizLogo />
           <Widget>
             <Widget.Header>
               <h3>
@@ -77,8 +49,15 @@ export default function Home() {
                   placeholder="Diz aí seu nome pra jogar :)"
                   onChange={(event) => setName(event.target.value)}
                   value={name}
+                  name="nomeDoUsuario"
                 />
-                <Button disabled={name.length < 3}>Jogar</Button>
+                <Button
+                  disabled={name.length < 3}
+                  type="submit"
+                >
+                  Jogar
+
+                </Button>
               </form>
             </Widget.Content>
           </Widget>
